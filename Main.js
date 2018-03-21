@@ -1,13 +1,18 @@
+// Don't touch anything without asking GeneratedScript#3909 first. \\
+
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const snekfetch = require("snekfetch");
 const website = "http://xyz.potato-host.com/puddingWhitelistCheck.php?key="
 const website2 = "http://xyz.potato-host.com/puddingAddWhitelist.php?Key="
+const blacklistws = "http://xyz.potato-host.com/puddingAddBlacklist.php?Key="
 var PastebinAPI = require('pastebin-js'),
 pastebin = new PastebinAPI('3a3f03696725a46033929f7ca868f1f4');
 
+// Post update
 
 client.on("ready", () => {
+  client.user.setGame(";buy");  
     client.channels.get("424208779849236483").send({embed: {
         color: 3066993,
         author: {
@@ -18,17 +23,21 @@ client.on("ready", () => {
         url: "https://discord.gg/GwmHMfE",
         description: "Cyber BOT has updated!",
         fields: [{
-            name: "- Working on RWF (Remote Whitelist Function) :white_check_mark: ",
+            name: "- Finished Remote Whitelist Function ",
             value: "Will be able to whitelist HWIDs from the discord with the bot."
           },
           {
-            name: "- Working on WSF (Whitelist Status Function) :white_check_mark: ",
+            name: "- Finished Whitelist Status function. ",
             value: "Will be able to view if you're whitelisted/blacklisted/neutral."
           },
           {
-              name: "- Purchase Function :white_check_mark: ",
+              name: "- Finished buy function (;buy) ",
               value: "Allows users to quickly purchase Cyber."
-          }
+          },
+          {
+            name: "- Finished Remote Blacklist Function ",
+            value: "Blacklist HWIDS with the bot (;bl HWID)"
+        }
         ],
         timestamp: new Date(),
         footer: {
@@ -38,6 +47,9 @@ client.on("ready", () => {
       }
     });
 });
+
+// Begin Commands function \\
+
 
 client.on("message", (message) => {
     if (message.channel.type == "dm"){
@@ -154,7 +166,7 @@ client.on("message", (message) => {
             },
             title: "Invalid HWID",
             url: "https://discord.gg/GwmHMfE",
-            description: "This HWID is invalud.",
+            description: "This HWID is invalid.",
             fields: [{
                 name: HWIND+" is not a valid HWID.",
                 value: "You can **NOT** use Cyber."
@@ -177,7 +189,7 @@ client.on("message", (message) => {
             },
             title: "Invalid HWID",
             url: "https://discord.gg/GwmHMfE",
-            description: "This HWID is invalud.",
+            description: "This HWID is invalid.",
             fields: [{
                 name: HWIND+" is not a valid HWID.",
                 value: "You can **NOT** use Cyber."
@@ -193,6 +205,10 @@ client.on("message", (message) => {
     }
     }
 )}
+
+
+// WHITELISTING FEATURE
+
 else
 if (message.content.startsWith(";wl")){
   if (message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112"){
@@ -258,7 +274,7 @@ else if (message.content == ";wl"){
         },
         title: "Invalid HWID",
         url: "https://discord.gg/GwmHMfE",
-        description: "This HWID is invalud.",
+        description: "This HWID is invalid.",
         fields: [{
             name: HWIND+" is not a valid HWID.",
             value: "You can **NOT** use Cyber."
@@ -281,7 +297,7 @@ else if (!HWIND){
         },
         title: "Invalid HWID",
         url: "https://discord.gg/GwmHMfE",
-        description: "This HWID is invalud.",
+        description: "This HWID is invalid.",
         fields: [{
             name: HWIND+" is not a valid HWID.",
             value: "You can **NOT** use Cyber."
@@ -297,8 +313,115 @@ else if (!HWIND){
 }
 }
 )}}
+} 
+
+
+// BLACKLISTED FEATURE
+
+else
+if (message.content.startsWith(";bl")){
+  if (message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112"){
+    message.delete();
+    var HWIND = args.join(" ");
+    snekfetch
+.get(blacklistws+HWIND)
+.then(function (data) {
+if(data.body.toString().includes('1')){
+    console.log("Blacklisted " + HWIND);
+    message.author.sendMessage({embed: {
+        color: 3066993,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL
+        },
+        title: "Blacklisted!",
+        url: "https://discord.gg/GwmHMfE",
+        description: "Info below.",
+        fields: [{
+            name: HWIND+" was blacklisted successfully!",
+            value: HWIND+" can no longer use Cyber."
+          }
+        ],
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: "Remember: If your profile pic is from an anime, your opinion doesn't count."
+        }
+      }
+    })
 }
-        
+else if (data.body.toString().includes('0')){
+    console.log("Error Blacklisting "+HWIND);
+    message.author.sendMessage({embed: {
+        color: 15158332,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL
+        },
+        title: "There was an error...",
+        url: "https://discord.gg/GwmHMfE",
+        description: "Error was returned.",
+        fields: [{
+            name: HWIND+" has not been blacklisted.",
+            value: "This HWID has **NOT** been blacklisted because it may already be blacklisted. Use `;hds "+HWIND+"` to check status."
+          }
+        ],
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: "Remember: If your profile pic is from an anime, your opinion doesn't count."
+        }
+      }
+    })
+}
+else if (message.content == ";bl"){
+  message.author.sendMessage({embed: {
+        color: 15158332,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL
+        },
+        title: "Invalid HWID",
+        url: "https://discord.gg/GwmHMfE",
+        description: "This HWID is invalid.",
+        fields: [{
+            name: HWIND+" is not a valid HWID.",
+            value: "You can **NOT** use Cyber."
+          }
+        ],
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: "Remember: If your profile pic is from an anime, your opinion doesn't count."
+        }
+      }
+    })
+}
+else if (!HWIND){
+  message.author.sendMessage({embed: {
+        color: 15158332,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL
+        },
+        title: "Invalid HWID",
+        url: "https://discord.gg/GwmHMfE",
+        description: "This HWID is invalid.",
+        fields: [{
+            name: HWIND+" is not a valid HWID.",
+            value: "You can **NOT** use Cyber."
+          }
+        ],
+        timestamp: new Date(),
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: "Remember: If your profile pic is from an anime, your opinion doesn't count."
+        }
+      }
+    })
+}
+}
+)}}        
 })
 
 

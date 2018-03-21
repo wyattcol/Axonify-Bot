@@ -12,7 +12,6 @@ pastebin = new PastebinAPI('3a3f03696725a46033929f7ca868f1f4');
 // Post update
 
 client.on("ready", () => {
-  client.user.setGame(";buy");  
     client.channels.get("424208779849236483").send({embed: {
         color: 3066993,
         author: {
@@ -49,6 +48,8 @@ client.on("ready", () => {
 });
 
 // Begin Commands function \\
+
+client.on('unhandledRejection', err => console.error(`Uncaught Promise Rejection: \n${err.stack}`));
 
 
 client.on("message", (message) => {
@@ -313,10 +314,7 @@ else if (!HWIND){
 }
 }
 )}}
-} 
-
-
-// BLACKLISTED FEATURE
+      // BLACKLISTED FEATURE      
 
 else
 if (message.content.startsWith(";bl")){
@@ -421,10 +419,12 @@ else if (!HWIND){
     })
 }
 }
-)}}        
+)}}  
+} 
+
+
 })
 
 
 
-
-client.login(process.env.TOKEN);
+client.login("NDI1NzcxMTU4NDE2MTMwMDU5.DZQwYQ.vvefmp21qZ4AUzyd_Y6YYVhIPw4");

@@ -53,7 +53,6 @@ client.on('unhandledRejection', err => console.error(`Uncaught Promise Rejection
 
 
 client.on("message", (message) => {
-    if (message.channel.type == "dm"){
     let args = message.content.split(" ").slice(1);    
     if (message.content.startsWith(";buy")){
         client.users.get('356506864231514112').send({embed: {
@@ -288,32 +287,7 @@ else if (message.content == ";wl"){
         }
       }
     })
-}
-else if(message.content.startsWith(";help")){
-message.channel.send({embed: {
-    color: 3447003,
-    author: {
-      name: client.user.username,
-      icon_url: client.user.avatarURL
-    },
-    title: "Help",
-    description: "Shows commands that can be used",
-    fields: [{
-        name: "User Commands",
-        value: ";hds"
-      
-      {
-        name: "Masked links",
-        value: "You can put [masked links](http://google.com) inside of rich embeds."
-      }
-    ],
-    timestamp: new Date(),
-    footer: {
-      icon_url: client.user.avatarURL,
-      text: "Test"
-    }
   }
-});
      
 //      //////////////////////////////////////////////////
 //     if(message.author.id == "Our IDs"||message.author.id == "Our IDs"){
@@ -346,6 +320,58 @@ else if (!HWIND){
 }
 }
 )}}
+else if(message.content.startsWith(";help")){
+  if(message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112"){
+    message.author.send({embed: {
+      color: 3447003,
+      author: {
+        name: client.user.username,
+        icon_url: client.user.avatarURL
+      },
+      title: "Admin CMDS",
+      description: "Cyber detected that you are an Admin.",
+      fields: [{
+          name: ";bl **HWID**",
+          value: "Blacklists HWID"
+        },
+        {
+          name: ";wl **HWID**",
+          value: "Whitelists HWID"
+        }
+      ],
+      timestamp: new Date(),
+      footer: {
+        icon_url: client.user.avatarURL,
+        text: "Remember: If your profile pic is from an anime, your opinion doesn't count."
+      }
+    }
+  })
+}
+message.author.send({embed: {
+    color: 3447003,
+    author: {
+      name: client.user.username,
+      icon_url: client.user.avatarURL
+    },
+    title: "Commands",
+    description: "Shows commands that can be used",
+    fields: [{
+        name: ";hds **HWID**",
+        value: "Checks status of HWID [Whitelisted/Neutral]"
+      },
+      {
+        name: ";buy",
+        value: "Sends a buy request to the creator. NOTE: $5."
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      icon_url: client.user.avatarURL,
+      text: "Remember: If your profile pic is from an anime, your opinion doesn't count."
+    }
+  }
+})
+}
       // BLACKLISTED FEATURE      
 
 else
@@ -452,11 +478,10 @@ else if (!HWIND){
 }
 }
 )}}  
-} 
 
 
 })
 
 
 
-client.login("NDI1NzcxMTU4NDE2MTMwMDU5.DZQwYQ.vvefmp21qZ4AUzyd_Y6YYVhIPw4");
+client.login(process.env.TOKEN);

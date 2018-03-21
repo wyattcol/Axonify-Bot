@@ -211,7 +211,7 @@ client.on("message", (message) => {
 
 else
 if (message.content.startsWith(";wl")){
-  if (message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112" || message.author.id == "308212533309865996"){
+  if (message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112"){
     message.delete();
     var HWIND = args.join(" ");
     snekfetch

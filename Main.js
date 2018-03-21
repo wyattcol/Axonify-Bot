@@ -212,7 +212,7 @@ client.on("message", (message) => {
 
 else
 if (message.content.startsWith(";wl")){
-  if (message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112"){
+  if (message.author.id == "223557159151992832" || message.author.id == "225631118223867914" || message.author.id == "279627951283372033" || message.author.id == "356506864231514112" || message.author.id == "308212533309865996"){
     message.delete();
     var HWIND = args.join(" ");
     snekfetch
@@ -289,6 +289,38 @@ else if (message.content == ";wl"){
       }
     })
 }
+else if(message.content.startsWith(";help")){
+message.channel.send({embed: {
+    color: 3447003,
+    author: {
+      name: client.user.username,
+      icon_url: client.user.avatarURL
+    },
+    title: "Help",
+    description: "Shows commands that can be used",
+    fields: [{
+        name: "User Commands",
+        value: ";hds"
+      },
+      {
+        name: "Masked links",
+        value: "You can put [masked links](http://google.com) inside of rich embeds."
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      icon_url: client.user.avatarURL,
+      text: "Test"
+    }
+  }
+});
+     
+//      //////////////////////////////////////////////////
+//     if(message.author.id == "Our IDs"||message.author.id == "Our IDs"){
+//        // Send an embed telling them that Cyber has detected they have access to administrator commands. Then send them a list of admin commands;
+//        // ;bl [HWID] | ;wl [HWID]
+//     }
+// }
 else if (!HWIND){
   message.author.sendMessage({embed: {
         color: 15158332,

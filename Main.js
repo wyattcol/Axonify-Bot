@@ -301,7 +301,7 @@ message.channel.send({embed: {
     fields: [{
         name: "User Commands",
         value: ";hds"
-      },
+      
       {
         name: "Masked links",
         value: "You can put [masked links](http://google.com) inside of rich embeds."

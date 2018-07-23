@@ -22,10 +22,10 @@ client.on('message', message => {
   // If the message is "ping"
   if (message.content === '!status') {
     // Send "pong" to the same channel
-      const numEmb = new Discord.RichEmbed()
-  .setColor(0xFFFF00)
-  .setAuthor("basic", 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yes_Check_Circle.svg/120px-Yes_Check_Circle.svg.png')
-  .addField("Axonify is currently in development! Releasing soon.")
+  message.channel.send({embed: {
+      color: 3447003,
+  description: "Axonify is currently in development! Releasing soon."
+}});
   // message.channel.send("`Axonify is currently in development! Releasing soon.`")
   }
 });

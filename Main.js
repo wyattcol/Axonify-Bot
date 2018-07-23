@@ -22,7 +22,7 @@ client.on('message', message => {
   // If the message is "ping"
   if (message.content === '!status') {
     // Send "pong" to the same channel
-   message.channel.send("`Axon is currently in development! Releasing soon.`")
+   message.channel.send("`Axonify is currently in development! Releasing soon.`")
   }
 });
 

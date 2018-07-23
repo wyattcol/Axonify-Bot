@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = 'NDcxMDQyOTEyMTk3NTQxODg5.DjfFfg.akT2UawKbMyh7epj-pRSeFrx_4E';
+const token = 'NDcxMDQyOTEyMTk3NTQxODg5.DjfG2Q._vqWK6jUW8L7XLpehKdRmRMx2pA';
 VideoLink = ""
 
 

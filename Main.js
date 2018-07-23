@@ -23,6 +23,7 @@ client.on('message', message => {
   if (message.content === '!status') {
     // Send "pong" to the same channel
    message.channel.send("`Axon is currently in development! Releasing soon.`")
+  }
 });
 
 

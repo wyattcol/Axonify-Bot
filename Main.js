@@ -1,39 +1,30 @@
+/*
+  A ping pong bot, whenever you send "ping", it replies "pong".
+*/
+
+// Import the discord.js module
 const Discord = require('discord.js');
+
+// Create an instance of a Discord client
 const client = new Discord.Client();
+
+// The token of your bot - https://discordapp.com/developers/applications/me
 const token = 'NDcxMDQyOTEyMTk3NTQxODg5.DjfG2Q._vqWK6jUW8L7XLpehKdRmRMx2pA';
-VideoLink = ""
 
-
+// The ready event is vital, it means that your bot will only start reacting to information
+// from Discord _after_ ready is emitted
 client.on('ready', () => {
   console.log('I am ready!');
 });
 
+// Create an event listener for messages
 client.on('message', message => {
-	let args = message.content.split(" ").slice(0);
-	if (words[0] === '!Status') {
-message.channel.send({embed: {
-    color: 3447003,
-    author: {
-      name: client.user.username,
-      icon_url: client.user.avatarURL
-    },
-    title: "Status",
-    url: VideoLink,
-    description: "Status of Axonify",
-    fields: [{
-        name: "Status",
-        value: "In Development"
-      }
-    ],
-    timestamp: new Date(),
-    footer: {
-      icon_url: client.user.avatarURL,
-      text: " "
-    }
+  // If the message is "ping"
+  if (message.content === 'ping') {
+    // Send "pong" to the same channel
+    message.channel.send('pong');
   }
 });
 
-	}
-});
-
+// Log our bot in
 client.login(token);

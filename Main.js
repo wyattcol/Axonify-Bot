@@ -20,11 +20,11 @@ client.on('ready', () => {
 // Create an event listener for messages
 client.on('message', message => {
   // If the message is "ping"
-  if (message.content === '!status') {
+  if (message.content === '!TestCrate') {
     // Send "pong" to the same channel
   message.channel.send({embed: {
       color: 3447003,
-  description: "Axonify is currently in development! Releasing soon."
+  description: "Tested Crate"
 }});
   // message.channel.send("`Axonify is currently in development! Releasing soon.`")
   }

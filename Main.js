@@ -18,13 +18,28 @@ client.on('ready', () => {
 });
 
 // Create an event listener for messages
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 client.on('message', message => {
   // If the message is "ping"
-  if (message.content === '!TestCrate') {
+  if (message.content === '!SpinBasicCrate') {
     // Send "pong" to the same channel
+    var itemwon = ""
+    var int = getRandomInt(3)
+    if (int = 1) {
+    itemwon = "1$";
+    }
+    else if (int = 2) {
+    itemwon = "2$";
+    }
+    else if (int = 3) {
+    itemwon = "3$";
+    }
   message.channel.send({embed: {
       color: 3447003,
-  description: "Tested Crate"
+  description: "You recieved a " + itemwon
 }});
   // message.channel.send("`Axonify is currently in development! Releasing soon.`")
   }

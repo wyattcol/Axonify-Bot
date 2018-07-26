@@ -26,8 +26,8 @@ client.on('message', message => {
   // If the message is "ping"
   if (message.content === '!SpinBasicCrate') {
     // Send "pong" to the same channel
-    var itemwon = ""
-    var int = getRandomInt(3)
+    var itemwon = "";
+    var int = getRandomInt(3);
     if (int = 1) {
     itemwon = "1$";
     }

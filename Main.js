@@ -1,6 +1,6 @@
-/*
-  A ping pong bot, whenever you send "ping", it replies "pong".
-*/
+/**
+ * A ping pong bot, whenever you send "ping", it replies "pong".
+ */
 
 // Import the discord.js module
 const Discord = require('discord.js');
@@ -8,14 +8,25 @@ const Discord = require('discord.js');
 // Create an instance of a Discord client
 const client = new Discord.Client();
 
-// The token of your bot - https://discordapp.com/developers/applications/me
-const token = 'NDgwNDgxMTU0MjQ4NDc0NjQ1.Dl37og.1G2R9DJyfXBTs_uXVPvFx2az4PQ';
-
-// The ready event is vital, it means that your bot will only start reacting to information
-// from Discord _after_ ready is emitted
+/**
+ * The ready event is vital, it means that only _after_ this will your bot start reacting to information
+ * received from Discord
+ */
 client.on('ready', () => {
   console.log('I am ready!');
 });
+
+// Create an event listener for messages
+client.on('message', message => {
+  // If the message is "ping"
+  if (message.content === 'ping') {
+    // Send "pong" to the same channel
+    message.channel.send('pong');
+  }
+});
+
+// Log our bot in using the token from https://discordapp.com/developers/applications/me
+client.login('NDgwNDgxMTU0MjQ4NDc0NjQ1.Dl37og.1G2R9DJyfXBTs_uXVPvFx2az4PQ');
 
 
 // client.on("ready", () => {
@@ -42,19 +53,3 @@ client.on('ready', () => {
 //     });
 // });
 
-
-
-client.on('message', message => {
-  // If the message is "ping"
-  var words = message.content.split(' ')
-	if (words[0] === '!!vote') {
-  message.channel.send({embed: {
-      color: 3447003,
-  description: "Successfully Voted for the " + words[1] + " Series!"
-}});
-  }
-});
-
-
-// Log our bot in
-client.login(token);

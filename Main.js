@@ -18,29 +18,29 @@ client.on('ready', () => {
 });
 
 
-client.on("ready", () => {
-    client.channels.get("427205992015462401").send({embed: {
-        color: 3066993,
-        author: {
-          name: client.user.username,
-          icon_url: client.user.avatarURL
-        },
-        title: "The Bot has Updated!",
-        url: "https://discord.gg/6C3xjY4",
-        description: "Riverrain123 Bot has Updated!",
-        fields: [{
-            name: "Started Development!",
-            value: "The Riverrain123 bot is now in development. Hoping for release later this week."
-          }
-        ],
-        timestamp: new Date(),
-        footer: {
-          icon_url: client.user.avatarURL,
-          text: "Bot developed by Orangedude4221"
-        }
-      }
-    });
-});
+// client.on("ready", () => {
+//     client.channels.get("427205992015462401").send({embed: {
+//         color: 3066993,
+//         author: {
+//           name: client.user.username,
+//           icon_url: client.user.avatarURL
+//         },
+//         title: "The Bot has Updated!",
+//         url: "https://discord.gg/6C3xjY4",
+//         description: "Riverrain123 Bot has Updated!",
+//         fields: [{
+//             name: "Started Development!",
+//             value: "The Riverrain123 bot is now in development. Hoping for release later this week."
+//           }
+//         ],
+//         timestamp: new Date(),
+//         footer: {
+//           icon_url: client.user.avatarURL,
+//           text: "Bot developed by Orangedude4221"
+//         }
+//       }
+//     });
+// });
 
 
 

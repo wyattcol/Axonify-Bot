@@ -19,14 +19,9 @@ client.on('ready', () => {
 // Create an event listener for messages
 client.on('message', message => {
     // If the message is "ping"
-    if (message.content === '!testembed') {
+    if (message.content === '!testmsg') {
         // Send "pong" to the same channel
-        message.channel.send({
-        embed: {
-           color: 3447003,
-           description: "A very simple Embed!"
-        }
-        });
+        message.channel.send("Tested Message");
     }
 });
 

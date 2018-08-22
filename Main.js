@@ -13,7 +13,7 @@ const client = new Discord.Client();
  * received from Discord
  */
 client.on('ready', () => {
-    client.channels.get("427205992015462401").send("The bot has recieved an update!")
+    client.channels.get("427205992015462401").send("`The bot has recieved an update!`")
 });
 
 // Create an event listener for messages
@@ -21,7 +21,7 @@ client.on('message', message => {
     // If the message is "ping"
     if (message.content === '!testmsg') {
         // Send "pong" to the same channel
-        message.channel.send("Tested Message");
+        message.channel.send("`Tested Message`");
     }
 });
 

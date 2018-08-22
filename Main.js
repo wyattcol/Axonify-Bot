@@ -13,12 +13,7 @@ const client = new Discord.Client();
  * received from Discord
  */
 client.on('ready', () => {
-    client.channels.get("469262685645701141").send({
-        embed: {
-            color: 3447003,
-            description: "The Bot has Updated!"
-        }
-    });
+    
 });
 
 // Create an event listener for messages

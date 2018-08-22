@@ -13,16 +13,26 @@ const client = new Discord.Client();
  * received from Discord
  */
 client.on('ready', () => {
-  console.log('I am ready!');
+    client.channels.get("469262685645701141").send({
+        embed: {
+            color: 3447003,
+            description: "The Bot has Updated!"
+        }
+    });
 });
 
 // Create an event listener for messages
 client.on('message', message => {
-  // If the message is "ping"
-  if (message.content === 'ping') {
-    // Send "pong" to the same channel
-    message.channel.send('pong');
-  }
+    // If the message is "ping"
+    if (message.content === '!testembed') {
+        // Send "pong" to the same channel
+        message.channel.send({
+        embed: {
+           color: 3447003,
+           description: "A very simple Embed!"
+        }
+        });
+    }
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
